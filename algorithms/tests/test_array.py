@@ -3,6 +3,8 @@ import unittest
 from algorithms.arrays import delete_nth, delete_nth_naive
 from algorithms.arrays import flatten, flatten_iter
 from algorithms.arrays import garage
+from algorithms.arrays import josephus
+from algorithms.arrays import limit
 
 
 class TestDeleteNth(unittest.TestCase):
@@ -95,3 +97,37 @@ class TestGarage(unittest.TestCase):
             [2, 3, 0, 1, 4],
             [0, 3, 2, 1, 4]
         ])
+
+
+class TestJosephus(unittest.TestCase):
+    def test_josephus(self):
+        int_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        skip = 3
+        self.assertListEqual(list(josephus(int_list, skip)),
+                             [3, 6, 9, 4, 8, 5, 2, 7, 1])
+
+        int_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        skip = 1
+        self.assertListEqual(list(josephus(int_list, skip)),
+                             [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+        int_list = []
+        skip = 1
+        self.assertListEqual(list(josephus(int_list, skip)),
+                             [])
+
+
+class TestLimit(unittest.TestCase):
+    def test_limit(self):
+        int_list = [1, 2, 3, 4, 5]
+        self.assertListEqual(list(limit(int_list)),
+                             [1, 2, 3, 4, 5])
+
+        self.assertListEqual(list(limit(int_list, min_lim=2)),
+                             [3, 4, 5])
+
+        self.assertListEqual(list(limit(int_list, max_lim=3)),
+                             [1, 2])
+
+        self.assertListEqual(list(limit(int_list, min_lim=2, max_lim=3)),
+                             [])
