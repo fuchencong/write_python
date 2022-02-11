@@ -28,3 +28,12 @@ Inspired by [keon/algorithms](https://github.com/keon/algorithms)
 ### limit
 
 * 使用列表推导计算新的列表，或者考虑使用 filter 高阶函数
+
+### longest_non_repeat
+
+* 使用 dict 来保存上一次该字符出现的位置
+* 即使是重复出现，也要判断其位置在当前判断区间内
+
+### max_ones_index
+
+* 最简单的实现方式是假设列表前后分别有 0 的哨兵位置，但是这种代码理解起来比较复杂

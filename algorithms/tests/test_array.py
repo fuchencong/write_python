@@ -5,6 +5,8 @@ from algorithms.arrays import flatten, flatten_iter
 from algorithms.arrays import garage
 from algorithms.arrays import josephus
 from algorithms.arrays import limit
+from algorithms.arrays import longest_non_repeat_str
+from algorithms.arrays import max_ones_index
 
 
 class TestDeleteNth(unittest.TestCase):
@@ -131,3 +133,33 @@ class TestLimit(unittest.TestCase):
 
         self.assertListEqual(list(limit(int_list, min_lim=2, max_lim=3)),
                              [])
+
+
+class TestLongestNonRepeatStr(unittest.TestCase):
+    def test_longest_non_repeat_str(self):
+        s = "abcabcbb"
+        self.assertEqual(longest_non_repeat_str(s), (3, 'abc'))
+
+        s = "bbbb"
+        self.assertEqual(longest_non_repeat_str(s), (1, 'b'))
+
+        s = "pwwkew"
+        self.assertEqual(longest_non_repeat_str(s), (3, 'wke'))
+
+
+class TestMaxOnesIndex(unittest.TestCase):
+    def test_max_ones_index(self):
+        l = [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1]
+        self.assertEqual(max_ones_index(l), 3)
+
+        l = [1, 1, 1]
+        self.assertEqual(max_ones_index(l), -1)
+
+        l = [0, 0, 0]
+        self.assertEqual(max_ones_index(l), 0)
+
+        l = [1, 1, 0]
+        self.assertEqual(max_ones_index(l), 2)
+
+        l = [0, 1, 1]
+        self.assertEqual(max_ones_index(l), 0)
