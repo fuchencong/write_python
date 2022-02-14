@@ -7,6 +7,8 @@ from algorithms.arrays import josephus
 from algorithms.arrays import limit
 from algorithms.arrays import longest_non_repeat_str
 from algorithms.arrays import max_ones_index
+from algorithms.arrays import Interval, merge_intervals
+from algorithms.arrays import missing_ranges
 
 
 class TestDeleteNth(unittest.TestCase):
@@ -163,3 +165,28 @@ class TestMaxOnesIndex(unittest.TestCase):
 
         l = [0, 1, 1]
         self.assertEqual(max_ones_index(l), 0)
+
+
+class TestMergeInterval(unittest.TestCase):
+    def test_merge(self):
+        interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
+        intervals = [Interval(i[0], i[1]) for i in interval_list]
+        merged_intervals = Interval.merge(intervals)
+        self.assertEqual(merged_intervals,
+                         [Interval(1, 6), Interval(8, 10), Interval(15, 18)])
+
+    def test_merge_intervals(self):
+        interval_list = [[1, 3], [2, 6], [8, 10], [15, 18]]
+        merged_intervals = merge_intervals(interval_list)
+        self.assertEqual(merged_intervals,
+                         [[1, 6], [8, 10], [15, 18]])
+
+
+class TestMissingRanges(unittest.TestCase):
+    def test_missing_ranges(self):
+        arr = [3, 5, 10, 11, 12, 15, 19]
+        self.assertListEqual(missing_ranges(arr, 0, 20),
+                             [(0, 2), (4, 4), (6, 9),
+                              (13, 14), (16, 18), (20, 20)])
+        self.assertListEqual(missing_ranges(arr, 6, 100),
+                             [(6, 9), (13, 14), (16, 18), (20, 100)])

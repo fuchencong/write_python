@@ -37,3 +37,11 @@ Inspired by [keon/algorithms](https://github.com/keon/algorithms)
 ### max_ones_index
 
 * 最简单的实现方式是假设列表前后分别有 0 的哨兵位置，但是这种代码理解起来比较复杂
+
+### merge_interval
+
+* 如何实现自己的 Interval 结构
+
+### missing_range
+
+* 从数组元素的角度来遍历，找出缺失的范围
